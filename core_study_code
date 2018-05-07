@@ -1,0 +1,51 @@
+#MergeMappingFiles
+#merge_mapping_files.py -m ./2017_03_smb/map.tsv,./2018_02_smb/map18.tsv -o merged_maps.tsv
+
+#Join 2016/2017/2018 OTU
+#merge_otu_tables.py -i ./2017_03_smb/OTU17/otu_table.biom,./2018_02_smb/OTU18/otu_table.biom -o ~/merged_otu.biom
+
+#CDA for all years
+#core_diversity_analyses.py -i ./merged_otu.biom -o ./CDA_all -m merged_maps.tsv -t ./97_otus.tree -e 39166 --recover_from_failure
+
+#Create Core Microbiome - organisms only present in 98% of samples - check for presence of Archaea
+#compute_core_microbiome.py -i ~/2018_02_smb/OTU18/otu_table.biom -o 98_core_otu.biom --min_fraction_for_core 0.98 
+
+#CDA for core microbiome
+#core_diversity_analyses.py -i ~/core_table_98.biom -o ~/CDA_core -m merged_maps.tsv -t ./97_otus.tree -e 4820 --recover_from_failure
+
+#Check for correlation between core abundance and metadata
+#observation_metadata_correlation.py -i ~/core_table_98.biom -o correlate_core_pH -m merged_maps.tsv -c SamplePh -s spearmans
+
+#Filter Non-Gordon Square Samples Out
+#filter_samples_from_otu_table.py -i ~/core_study/core_table_98.biom -o ~/core_study/core_98_park.biom -m ~/core_study/parkmap.tsv --sample_id_fp ~/removeID --negate_sample_id_fp
+
+#CDA for core_microbiome for just Gordon Square
+#core_diversity_analyses.py -i ~/core_study/core_park_98_samples.biom -o ~/CDA_core_park -m ~/2018_02_smb/map.tsv -t ~/97_otus.tree -e 4820 --recover_from_failure
+
+#HeatMap core
+#make_otu_heatmap.py -i ~/CDA_core_park/taxa_plots/table_mc4820_sorted_L2.biom -o ~/heatmap_core_park.pdf -m ~/2018_02_smb/map.tsv -g png --color_scheme Greys --no_log_transform
+
+#Split biom table to L2
+#split_otu_table_by_taxonomy.py -i ~/core_study/core_park_98_samples.biom -o ~/core_study/core_park_98_samples_L2.biom -L 2
+
+#CoreBiom and pH correlation 
+#observation_metadata_correlation.py -i ~/core_study/core_park_98_samples.biom -o ~/core_study/correlateph -m ~/2018_02_smb/map.tsv -c SamplePh
+
+#Compare AlphaDiv of CoreBiom
+#compare_alpha_diversity.py -m ~/2018_02_smb/map.tsv -i ~/CDA_core_park/arare_max4820/alpha_div_collated/observed_otus.txt -o ~/compare_alpha_3 -c SamplePh,SampleNitrogen,SamplePotassium,SamplePhosphorus,SampleVegetation
+
+#pH correlation to core biom
+#observation_metadata_correlation.py -i ~/core_study/core_table_98.biom -m ~/core_study/parkmap.tsv -o ~/core_study/correlate_pH -c SamplePh --pval_assignment_method bootstrapped
+
+#Converted Metadata to CoreBiom
+#observation_metadata_correlation.py -i ~/core_study/core_98_park.biom -m ~/core_study/finalmap.tsv -o ~/core_study/correlate_N -c SampleNitrogen --pval_assignment_method bootstrapped
+#observation_metadata_correlation.py -i ~/core_study/core_98_park.biom -m ~/core_study/finalmap.tsv -o ~/core_study/correlate_K -c SamplePotassium --pval_assignment_method bootstrapped
+#observation_metadata_correlation.py -i ~/core_study/core_98_park.biom -m ~/core_study/finalmap.tsv -o ~/core_study/correlate_P -c SamplePhosphorus --pval_assignment_method bootstrapped
+
+#GroupSignificance
+#group_significance.py -i ~/core_study/core_98_park.biom -m ~/core_study/finalmap.tsv -c SampleVegetation -o ~/groupsig_veg -s mann_whitney_u
+#group_significance.py -i ~/core_study/core_98_park.biom -m ~/core_study/parkmap.tsv -c SampleNitrogen -o ~/groupsig_N
+#group_significance.py -i ~/core_study/core_98_park.biom -m ~/core_study/parkmap.tsv -c SamplePhosphorus -o ~/groupsig_P
+#group_significance.py -i ~/core_study/core_98_park.biom -m ~/core_study/parkmap.tsv -c SamplePotassium -o ~/groupsig_K
+
+source deactivate
