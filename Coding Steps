@@ -47,5 +47,3 @@
 #group_significance.py -i ~/core_study/core_98_park.biom -m ~/core_study/parkmap.tsv -c SampleNitrogen -o ~/groupsig_N
 #group_significance.py -i ~/core_study/core_98_park.biom -m ~/core_study/parkmap.tsv -c SamplePhosphorus -o ~/groupsig_P
 #group_significance.py -i ~/core_study/core_98_park.biom -m ~/core_study/parkmap.tsv -c SamplePotassium -o ~/groupsig_K
-
-source deactivate
