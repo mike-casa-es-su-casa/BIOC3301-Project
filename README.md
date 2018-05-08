@@ -4,7 +4,8 @@
 #### Core Microbiome 
 
 The core microbiome, taxa found in 98% of samples, was computed using 
-> compute_core_microbiome.py -i ~/2018_02_smb/OTU18/otu_table.biom -o 98_core_otu.biom --min_fraction_for_core 0.98 
+
+> compute_core_microbiome.py
 
 And the following 11 phyla were identified. Only one, *Crenarchaeota*, is in the Archaea kingdom.
 
@@ -30,10 +31,12 @@ The same data was used to plot a heatmap to show the relative abundance of each 
 
 > make_otu_heatmap.py 
 
-### Statistical Tests
+#### Statistical Tests
 
 The following scripts were used to calculate correlations in continous data and categorical data. The results for them are found in the directory [Core_Study_Stats](https://github.com/mike-casa-es-su-casa/BIOC3301-Project/tree/master/core_study_stats).
 
 > observation_metadata_correlation.py
+
 and
+
 > group_significance.py
