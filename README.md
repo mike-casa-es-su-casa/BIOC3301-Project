@@ -1,7 +1,7 @@
 # Archaea in Gordon Square Park Soil :leaves:
 ## A summary of scripts used to identify any possible relationship phylums within the Archaea kingdom may have based on soil nutrient concentrations, pH and vegetation presence. 
 
-#### Core Microbiome 
+### Core Microbiome 
 
 The core microbiome, taxa found in 98% of samples, was computed using:
 
@@ -21,7 +21,7 @@ And the following 11 phyla were identified. Only one, *Crenarchaeota*, is in the
 * Proteobacteria
 * Verrucomicrobia
 
-#### Core Diversity Analysis
+### Core Diversity Analysis
 
 The Core Diversity Analysis runs a series of tests for alpha and beta diversity. It also plots a bar chart of the relative abundance of each phylum in each soil sample.This script was used after filtering out 2017 samples and samples out of Gordon Square Park:
 
@@ -39,7 +39,7 @@ The same data was used to plot a heatmap to show the relative abundance of each 
 ![Heat Map](/heatmap)
 
 
-#### Statistical Tests
+### Statistical Tests
 
 The following scripts were used to calculate correlations in continous data and significant abundances in categorical data. 
 
@@ -50,6 +50,7 @@ and
 > group_significance.py
 
 The results for correlation against nutrients and pH is found [here](https://github.com/mike-casa-es-su-casa/BIOC3301-Project/tree/master/core_study_stats/correlate)
+
 The results for significant abundance is found [here](https://github.com/mike-casa-es-su-casa/BIOC3301-Project/tree/master/core_study_stats/groupsig)
 
 Correlations are only identifable with continous data, the table below summarises the data conversion for this:
@@ -60,6 +61,6 @@ Low | 0.05 | 15 | 150
 Medium | 0.1 | 20 | 200 
 High | 0.2 | 30 | 300
 
-#### Step by Step Script Guide
+### Step by Step Script Guide
 
 A summary of all the scripts used step by step can be found in the repository [step-by-step script](https://github.com/mike-casa-es-su-casa/BIOC3301-Project/blob/master/Step-by-Step%20Script)
