@@ -36,15 +36,28 @@ The same data was used to plot a heatmap to show the relative abundance of each 
 
 > make_otu_heatmap.py 
 
+![Heat Map](/heatmap_core_park.png)
+
+
 #### Statistical Tests
 
-The following scripts were used to calculate correlations in continous data and categorical data. The results for them are found in the directory [core_study_stats](https://github.com/mike-casa-es-su-casa/BIOC3301-Project/tree/master/core_study_stats):
+The following scripts were used to calculate correlations in continous data and categorical data. 
 
 > observation_metadata_correlation.py
 
-and,
+and
 
 > group_significance.py
+
+The results for them are found in the directory [core_study_stats](https://github.com/mike-casa-es-su-casa/BIOC3301-Project/tree/master/core_study_stats):
+
+Correlations are only identifable with continous data, the table below summarises the data conversion for this:
+
+Categorical Data Value | Nitrogen(%) | Phosphorus (ppm) | Potassium (ppm)
+------------ | ------------- | ------------- | -------------
+Low | 0.05 | 15 | 150
+Medium | 0.1 | 20 | 200 
+High | 0.2 | 30 | 300
 
 
 A summary of the scripts used can be found in the [Step-by-Step Script](https://github.com/mike-casa-es-su-casa/BIOC3301-Project/blob/master/Step-by-Step%20Script)
