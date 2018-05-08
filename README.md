@@ -36,7 +36,7 @@ The same data was used to plot a heatmap to show the relative abundance of each 
 
 > make_otu_heatmap.py 
 
-![Heat Map](/heatmap_core_park.png)
+![Heat Map](/CDA/heatmap_core_park.png)
 
 
 #### Statistical Tests
