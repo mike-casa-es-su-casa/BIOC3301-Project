@@ -27,6 +27,11 @@ The Core Diversity Analysis runs a series of tests for alpha and beta diversity.
 
 > core_diversity_analyses.py 
 
+The Level 2 (phylum) taxa summary shows the relative abundance for each sample
+
+![L2 Taxa Summary](/CDA/taxa_plots/taxa_summary_plots/charts/DZ7y4rN6BJRh0XjhwmxQkF1phz5zkz.png)
+
+
 The same data was used to plot a heatmap to show the relative abundance of each species spread across samples. 
 
 > make_otu_heatmap.py 
